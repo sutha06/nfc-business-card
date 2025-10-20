@@ -1,0 +1,334 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.profile-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 3px solid #ffffff;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.title {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.location {
+  font-size: 0.85rem;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.bio-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 20px 0 30px 0;
+  text-align: center;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+.action-btn i {
+  font-size: 1rem;
+}
+
+.section-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 35px 0 30px 0;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px 15px;
+  margin-bottom: 40px;
+}
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-icon:active {
+  transform: scale(0.92);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.icon-circle i {
+  font-size: 1.6rem;
+}
+
+.app-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* App Icon Colors */
+.linkedin-icon {
+  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+}
+
+.github-icon {
+  background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+}
+
+.email-icon {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+}
+
+.phone-icon {
+  background: linear-gradient(135deg, #34c759 0%, #28a745 100%);
+}
+
+.tryhackme-icon {
+  background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
+}
+
+.whatsapp-icon {
+  background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+}
+
+.sms-icon {
+  background: linear-gradient(135deg, #ffb800 0%, #ff9500 100%);
+}
+
+.discord-icon {
+  background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  opacity: 0.4;
+  letter-spacing: 1px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.6;
+  line-height: 1;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.modal-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.modal-text {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.modal-link {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.modal-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 16px 30px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.modal-btn:active {
+  opacity: 0.9;
+}
+
+.copy-feedback {
+  display: none;
+  margin-top: 15px;
+  color: #34c759;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.copy-feedback.show {
+  display: block;
+}
+
+@media (max-width: 400px) {
+  .app-grid {
+    gap: 20px 10px;
+  }
+
+  .icon-circle {
+    width: 55px;
+    height: 55px;
+  }
+
+  .icon-circle i {
+    font-size: 1.4rem;
+  }
+
+  .app-label {
+    font-size: 0.65rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .action-btn {
+    padding: 14px 16px;
+    font-size: 0.8rem;
+  }
+}
