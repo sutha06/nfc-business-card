@@ -6,7 +6,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(271deg, #ffffff, #000000, #9d9797);
+  background: linear-gradient(271deg, #7a7f9b, #000000, #9d9797);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 35s ease infinite;
   -moz-animation: AnimationName 35s ease infinite;
@@ -336,7 +336,6 @@ h1 {
     font-size: 0.8rem;
   }
 }
-
 @-webkit-keyframes AnimationName {
   0% {
     background-position: 0% 84%;
