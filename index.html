@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suthakaran Siva - Contact</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="profile-section">
+        <div class="profile-photo">
+          <img src="profile.jpg" alt="Suthakaran Siva" />
+        </div>
+        <h1>Suthakaran Siva</h1>
+        <p class="title">IT Support & System Administration</p>
+        <p class="location">Toronto, Ontario, Canada</p>
+      </div>
+
+      <p class="bio-text">
+        Seeking Entry-Level/Internship opportunities in IT Support and System
+        Administration. Strong foundation in networking, operating systems,
+        configuration management, and cloud technologies.
+      </p>
+
+      <div class="app-grid">
+        <a
+          href="https://linkedin.com/in/yourprofile"
+          target="_blank"
+          class="app-icon"
+        >
+          <div class="icon-circle linkedin-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <span class="app-label">LinkedIn</span>
+        </a>
+
+        <a href="mailto:suthakaran.siva0601@gmail.com" class="app-icon">
+          <div class="icon-circle email-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <span class="app-label">Email</span>
+        </a>
+
+        <a href="tel:+1234567890" class="app-icon">
+          <div class="icon-circle phone-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <span class="app-label">Call</span>
+        </a>
+
+        <a
+          href="https://github.com/yourprofile"
+          target="_blank"
+          class="app-icon"
+        >
+          <div class="icon-circle github-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <span class="app-label">GitHub</span>
+        </a>
+
+        <a
+          href="https://tryhackme.com/p/yourprofile"
+          target="_blank"
+          class="app-icon"
+        >
+          <div class="icon-circle tryhackme-icon">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <span class="app-label">TryHackMe</span>
+        </a>
+
+        <a href="https://wa.me/1234567890" target="_blank" class="app-icon">
+          <div class="icon-circle whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <span class="app-label">WhatsApp</span>
+        </a>
+
+        <a href="sms:+1234567890" class="app-icon">
+          <div class="icon-circle sms-icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <span class="app-label">Message</span>
+        </a>
+
+        <a
+          href="https://discord.com/users/youruserid"
+          target="_blank"
+          class="app-icon"
+        >
+          <div class="icon-circle discord-icon">
+            <i class="fab fa-discord"></i>
+          </div>
+          <span class="app-label">Discord</span>
+        </a>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div class="action-buttons">
+        <a href="your-resume.pdf" target="_blank" class="action-btn">
+          <i class="fas fa-file-alt"></i>
+          <span>View Resume</span>
+        </a>
+        <a
+          href="#"
+          onclick="handlePortfolioClick(); return false;"
+          class="action-btn"
+        >
+          <i class="fas fa-briefcase"></i>
+          <span>View Portfolio</span>
+        </a>
+      </div>
+
+      <!-- Mobile Portfolio Modal -->
+      <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal()">&times;</button>
+          <i class="fas fa-desktop modal-icon"></i>
+          <h2 class="modal-title">Best Viewed on Desktop</h2>
+          <p class="modal-text">
+            For the optimal experience with animations and interactions, please
+            view my portfolio on a desktop browser.
+          </p>
+          <div class="modal-link">www.yourportfolio.com</div>
+          <button class="modal-btn" onclick="copyPortfolioLink()">
+            <i class="fas fa-copy"></i> Copy Link
+          </button>
+          <div id="copyFeedback" class="copy-feedback">
+            Copied to clipboard!
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">© 2025 SUTHAKARAN SIVA</div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
