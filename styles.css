@@ -13,14 +13,15 @@ body {
   animation: AnimationName 35s ease infinite;
   color: #ffffff;
   min-height: 100vh;
-  padding: 20px;
+  padding: 0; /* Changed from 20px */
+  margin: 0;
 }
 
 .container {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 20px; /* Keep padding here instead */
 }
 
 .profile-section {
