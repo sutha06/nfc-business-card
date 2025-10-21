@@ -14,8 +14,7 @@
   --card-bg: rgba(255, 255, 255, 0.08);
   --card-bg-hover: rgba(255, 255, 255, 0.12);
   --card-border: rgba(255, 255, 255, 0.1);
-  --profile-border: rgba(255, 255, 255, 0.2);
-  --profile-bg: #2a2a2a;
+  --info-card-bg: rgba(0, 0, 0, 0.7);
   --modal-bg: #1a1a1a;
   --modal-border: rgba(255, 255, 255, 0.2);
   --modal-link-bg: rgba(255, 255, 255, 0.1);
@@ -41,8 +40,7 @@
     --card-bg: rgba(0, 0, 0, 0.04);
     --card-bg-hover: rgba(0, 0, 0, 0.08);
     --card-border: rgba(0, 0, 0, 0.1);
-    --profile-border: rgba(0, 0, 0, 0.15);
-    --profile-bg: #e0e0e0;
+    --info-card-bg: rgba(255, 255, 255, 0.95);
     --modal-bg: #ffffff;
     --modal-border: rgba(0, 0, 0, 0.15);
     --modal-link-bg: #f5f5f5;
@@ -96,49 +94,53 @@ body {
   min-height: 100vh;
 }
 
-/* Hero Section */
-.hero-section {
-  padding: 40px 30px 30px 30px;
-  text-align: center;
-}
-
-.profile-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
+/* Large Hero Photo */
+.hero-photo {
+  width: 100%;
+  height: 450px;
   overflow: hidden;
-  border: 3px solid var(--profile-border);
-  background: var(--profile-bg);
+  position: relative;
+  background: #1a1a1a;
 }
 
-.profile-photo img {
+.hero-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
-.hero-info {
-  margin-bottom: 10px;
+/* Info Card Overlay */
+.info-card {
+  background: var(--info-card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 25px 30px;
+  margin: -60px 20px 0 20px;
+  border-radius: 16px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: -0.5px;
   color: var(--text-primary);
 }
 
 .job-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .location {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-tertiary);
   font-weight: 400;
 }
@@ -148,7 +150,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding: 0 30px 30px 30px;
+  padding: 20px 20px 30px 20px;
 }
 
 .action-button {
@@ -374,6 +376,7 @@ h1 {
   width: 100%;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.3px;
+  position: relative;
 }
 
 .modal-btn:active {
@@ -392,22 +395,72 @@ h1 {
   display: block;
 }
 
+/* Copy Button Checkmark Animation */
+.modal-btn.copied {
+  background: #34c759 !important;
+  pointer-events: none;
+  color: transparent !important;
+}
+
+/* Hide all text content when copied */
+.modal-btn.copied * {
+  display: none;
+}
+
+/* Checkmark that appears */
+.modal-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  opacity: 0;
+  display: none;
+}
+
+.modal-btn.copied::after {
+  content: "✓";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  width: auto;
+  height: auto;
+  display: block;
+  animation: checkmarkPop 0.4s ease forwards;
+}
+
+@keyframes checkmarkPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 @media (max-width: 500px) {
-  .hero-section {
-    padding: 30px 20px 20px 20px;
+  .hero-photo {
+    height: 400px;
   }
 
-  .profile-photo {
-    width: 100px;
-    height: 100px;
+  .info-card {
+    margin: -50px 15px 0 15px;
+    padding: 20px 25px;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .main-actions {
-    padding: 0 20px 20px 20px;
+    padding: 15px 15px 25px 15px;
   }
 
   .bio-section {
@@ -416,5 +469,15 @@ h1 {
 
   .contact-links {
     padding: 15px 20px 30px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-photo {
+    height: 350px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
   }
 }
