@@ -1,3 +1,57 @@
+:root {
+  /* Dark mode colors (default) */
+  --bg-gradient-1: #000000;
+  --bg-gradient-2: #110f0f;
+  --bg-gradient-3: #171313;
+  --bg-gradient-4: #231e1e;
+  --bg-gradient-5: #464141;
+  --bg-gradient-6: #695656;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.9);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --text-quaternary: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-bg-hover: rgba(255, 255, 255, 0.12);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --profile-border: rgba(255, 255, 255, 0.2);
+  --profile-bg: #2a2a2a;
+  --modal-bg: #1a1a1a;
+  --modal-border: rgba(255, 255, 255, 0.2);
+  --modal-link-bg: rgba(255, 255, 255, 0.1);
+  --modal-link-border: rgba(255, 255, 255, 0.2);
+  --resume-button-bg: rgba(255, 255, 255, 0.15);
+  --resume-button-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-gradient-1: #f5f5f5;
+    --bg-gradient-2: #e8e8e8;
+    --bg-gradient-3: #dadada;
+    --bg-gradient-4: #cccccc;
+    --bg-gradient-5: #b8b8b8;
+    --bg-gradient-6: #a0a0a0;
+    --text-primary: #000000;
+    --text-secondary: rgba(0, 0, 0, 0.9);
+    --text-tertiary: rgba(0, 0, 0, 0.6);
+    --text-quaternary: rgba(0, 0, 0, 0.8);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-bg: rgba(0, 0, 0, 0.04);
+    --card-bg-hover: rgba(0, 0, 0, 0.08);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --profile-border: rgba(0, 0, 0, 0.15);
+    --profile-bg: #e0e0e0;
+    --modal-bg: #ffffff;
+    --modal-border: rgba(0, 0, 0, 0.15);
+    --modal-link-bg: #f5f5f5;
+    --modal-link-border: rgba(0, 0, 0, 0.1);
+    --resume-button-bg: rgba(0, 0, 0, 0.08);
+    --resume-button-border: rgba(0, 0, 0, 0.15);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,41 +62,54 @@ body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(
     180deg,
-    #000000,
-    #110f0f,
-    #171313,
-    #231e1e,
-    #464141,
-    #695656
+    var(--bg-gradient-1),
+    var(--bg-gradient-2),
+    var(--bg-gradient-3),
+    var(--bg-gradient-4),
+    var(--bg-gradient-5),
+    var(--bg-gradient-6)
   );
   background-size: 360% 360%;
   animation: gradient-animation 30s ease infinite;
-  color: #ffffff;
+  color: var(--text-primary);
   min-height: 100vh;
   padding: 0;
   margin: 0;
 }
 
-.container {
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card-container {
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px; /* Keep padding here instead */
+  min-height: 100vh;
 }
 
-.profile-section {
+/* Hero Section */
+.hero-section {
+  padding: 40px 30px 30px 30px;
   text-align: center;
-  margin-bottom: 30px;
 }
 
 .profile-photo {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin: 0 auto 20px;
-  border: 3px solid #ffffff;
   overflow: hidden;
-  background: #1a1a1a;
+  border: 3px solid var(--profile-border);
+  background: var(--profile-bg);
 }
 
 .profile-photo img {
@@ -51,125 +118,148 @@ body {
   object-fit: cover;
 }
 
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
-
-.title {
-  font-size: 0.9rem;
-  opacity: 0.7;
-  font-weight: 400;
-  line-height: 1.5;
+.hero-info {
   margin-bottom: 10px;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.job-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
 .location {
-  font-size: 0.85rem;
-  opacity: 0.5;
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
   font-weight: 400;
 }
 
-.bio-text {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  line-height: 1.6;
-  margin: 20px 0 30px 0;
-  text-align: center;
-}
-
-.action-buttons {
+/* Main Action Buttons */
+.main-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 40px;
+  padding: 0 30px 30px 30px;
 }
 
-.action-btn {
+.action-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 16px 20px;
-  background: #ffffff;
-  color: #000000;
-  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.3px;
-  border-radius: 8px;
+  text-decoration: none;
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
 }
 
-.action-btn:active {
+.action-button:active {
   transform: scale(0.96);
-  opacity: 0.9;
 }
 
-.action-btn i {
+.linkedin-button {
+  background: #0077b5;
+  color: #ffffff;
+}
+
+.resume-button {
+  background: var(--resume-button-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--resume-button-border);
+}
+
+.action-button i {
   font-size: 1rem;
 }
 
-.section-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 35px 0 30px 0;
+/* Bio Section */
+.bio-section {
+  padding: 30px 30px 20px 30px;
+  border-top: 1px solid var(--border-color);
 }
 
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px 15px;
-  margin-bottom: 40px;
+.bio-section h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-primary);
 }
 
-.app-icon {
+.bio-section p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-quaternary);
+  font-weight: 400;
+}
+
+/* Contact Links */
+.contact-links {
+  padding: 20px 30px 40px 30px;
+}
+
+.contact-link {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
   text-decoration: none;
-  color: #ffffff;
-  transition: transform 0.2s;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
 }
 
-.app-icon:active {
-  transform: scale(0.92);
+.contact-link:active {
+  transform: scale(0.98);
+  background: var(--card-bg-hover);
 }
 
-.icon-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
+.link-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.link-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
 }
 
-.icon-circle i {
-  font-size: 1.6rem;
+.link-icon i {
+  font-size: 1.3rem;
+  color: #ffffff;
 }
 
-.app-label {
-  font-size: 0.7rem;
+.link-icon-wrapper span {
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.2px;
-  text-align: center;
-  opacity: 0.9;
 }
 
-/* App Icon Colors */
-.linkedin-icon {
-  background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-}
-
-.github-icon {
-  background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+.arrow {
+  font-size: 0.9rem;
+  opacity: 0.5;
 }
 
 .email-icon {
@@ -180,30 +270,12 @@ h1 {
   background: linear-gradient(135deg, #34c759 0%, #28a745 100%);
 }
 
-.tryhackme-icon {
-  background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
+.github-icon {
+  background: linear-gradient(135deg, #6e5494 0%, #4a3768 100%);
 }
 
-.whatsapp-icon {
-  background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
-}
-
-.sms-icon {
-  background: linear-gradient(135deg, #ffb800 0%, #ff9500 100%);
-}
-
-.discord-icon {
-  background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
-}
-
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.75rem;
-  opacity: 0.4;
-  letter-spacing: 1px;
+.portfolio-icon {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
 }
 
 /* Modal Styles */
@@ -226,8 +298,8 @@ h1 {
 }
 
 .modal-content {
-  background: #1a1a1a;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: var(--modal-bg);
+  border: 2px solid var(--modal-border);
   border-radius: 16px;
   padding: 40px 30px;
   max-width: 400px;
@@ -242,7 +314,7 @@ h1 {
   right: 15px;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 2rem;
   cursor: pointer;
   opacity: 0.6;
@@ -256,12 +328,14 @@ h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   opacity: 0.8;
+  color: var(--text-primary);
 }
 
 .modal-title {
   font-size: 1.5rem;
   margin-bottom: 15px;
   font-weight: 600;
+  color: var(--text-primary);
 }
 
 .modal-text {
@@ -269,22 +343,24 @@ h1 {
   opacity: 0.7;
   line-height: 1.6;
   margin-bottom: 25px;
+  color: var(--text-primary);
 }
 
 .modal-link {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--modal-link-bg);
+  border: 1px solid var(--modal-link-border);
   padding: 15px;
   border-radius: 8px;
   font-size: 0.9rem;
   margin-bottom: 20px;
   font-weight: 500;
   word-break: break-all;
+  color: var(--text-primary);
 }
 
 .modal-btn {
-  background: #ffffff;
-  color: #000000;
+  background: var(--text-primary);
+  color: var(--bg-gradient-1);
   border: none;
   padding: 16px 30px;
   border-radius: 8px;
@@ -315,14 +391,30 @@ h1 {
 .copy-feedback.show {
   display: block;
 }
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
+
+@media (max-width: 500px) {
+  .hero-section {
+    padding: 30px 20px 20px 20px;
   }
-  50% {
-    background-position: 100% 50%;
+
+  .profile-photo {
+    width: 100px;
+    height: 100px;
   }
-  100% {
-    background-position: 0% 50%;
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .main-actions {
+    padding: 0 20px 20px 20px;
+  }
+
+  .bio-section {
+    padding: 20px 20px 15px 20px;
+  }
+
+  .contact-links {
+    padding: 15px 20px 30px 20px;
   }
 }
